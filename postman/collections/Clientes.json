@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "6f6014b6-d227-433b-9254-6c8aaac2d311",
+		"name": "Clientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "7190853-6f6014b6-d227-433b-9254-6c8aaac2d311"
+	},
+	"item": [
+		{
+			"name": "Crear cliente",
+			"id": "9c100808-5683-4c66-8526-e97da3481a08",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Robinson\",\r\n    \"last_name\": \"Horta\",\r\n    \"cellphone\": \"3184787109\",\r\n    \"address\": \"Cra 42 B# 114-31\",\r\n    \"email\": \"hortarobinson3@gmail.com\",\r\n    \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clients",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "65f0d10a-5c52-443c-925e-c062b50aa9ad",
+					"name": "Crear cliente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Robinson\",\r\n    \"last_name\": \"Horta\",\r\n    \"cellphone\": \"3184787109\",\r\n    \"address\": \"Cra 42 B# 114-31\",\r\n    \"email\": \"hortarobinson3@gmail.com\",\r\n    \"status\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:42:04 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:42:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario creado con exito\",\n    \"data\": {\n        \"name\": \"Robinson\",\n        \"last_name\": \"Horta\",\n        \"cellphone\": \"3184787109\",\n        \"address\": \"Cra 42 B# 114-31\",\n        \"email\": \"hortarobinson3@gmail.com\",\n        \"status\": false,\n        \"updated_at\": \"2023-04-26T10:42:04.000000Z\",\n        \"created_at\": \"2023-04-26T10:42:04.000000Z\",\n        \"id\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar clientes",
+			"id": "ecd1d97b-a318-4d00-a58e-7c4e52a98af2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"4\",\r\n    \"name\": \"Robinson de jesus\",\r\n    \"last_name\": \"Horta\",\r\n    \"cellphone\": \"3184787109\",\r\n    \"address\": \"Cra 42 B# 114-31\",\r\n    \"email\": \"hortarobinson3@gmail.com\",\r\n    \"status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/put/clients",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"put",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "3cc4b181-008f-45c3-a825-07ca838d0cad",
+					"name": "Editar clientes",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"4\",\r\n    \"name\": \"Robinson de jesus\",\r\n    \"last_name\": \"Horta\",\r\n    \"cellphone\": \"3184787109\",\r\n    \"address\": \"Cra 42 B# 114-31\",\r\n    \"email\": \"hortarobinson3@gmail.com\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/put/clients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"put",
+								"clients"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:47:06 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:47:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario actualizado con exito\",\n    \"data\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Todos los clientes",
+			"id": "36bab2ad-f0c2-40d4-a0d6-b44c8fb77e8b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clients",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "53ab3b5e-73f0-48bc-b9fa-9eaa6c6c9631",
+					"name": "Todos los clientes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:39:12 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:39:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Listado de clientes cargado con exito\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Robinson\",\n            \"last_name\": \"Horta\",\n            \"cellphone\": \"3184787109\",\n            \"address\": \"Cra 42 B# 114-31\",\n            \"email\": \"hortarobinson@gmail.com\",\n            \"status\": 1,\n            \"created_at\": \"2023-04-26T10:36:13.000000Z\",\n            \"updated_at\": \"2023-04-26T10:36:13.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Nactali\",\n            \"last_name\": \"Rios\",\n            \"cellphone\": \"3043985610\",\n            \"address\": \"Cra 42 B# 114-31\",\n            \"email\": \"nacta.rios@gmail.com\",\n            \"status\": 1,\n            \"created_at\": \"2023-04-26T10:36:13.000000Z\",\n            \"updated_at\": \"2023-04-26T10:36:13.000000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Buscar un cliente",
+			"id": "19517568-b1d0-4f62-bea9-ebea9c3325ed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/clients/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clients",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "77be1508-729f-4e61-8318-8b8e68ad9359",
+					"name": "Buscar un cliente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:52:38 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:52:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario encontrado con exito\",\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"Robinson de jesus\",\n        \"last_name\": \"Horta\",\n        \"cellphone\": \"3184787109\",\n        \"address\": \"Cra 42 B# 114-31\",\n        \"email\": \"hortarobinson3@gmail.com\",\n        \"status\": 1,\n        \"created_at\": \"2023-04-26T10:42:04.000000Z\",\n        \"updated_at\": \"2023-04-26T10:47:06.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Inactivar cliente",
+			"id": "5da6c797-86b0-4a89-8207-f58098759cf1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/delete/clients/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"delete",
+						"clients",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "6069f907-ce9c-4e59-8076-f2d3e926550f",
+					"name": "Inactivar cliente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/delete/clients/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"delete",
+								"clients",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:55:33 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Apr 2023 10:55:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Usuario eliminado con exito\",\n    \"data\": 1\n}"
+				}
+			]
+		}
+	]
+}
