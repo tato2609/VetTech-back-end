@@ -19,7 +19,7 @@ use Modules\Clients\Http\ClientsController;
 // });
 
 Route::get('clients',             'ClientsController@index');
-Route::get('clients/{id}',        'ClientsController@show');
+Route::get('clients/{id}',        'ClientsController@edit');
 Route::get('delete/clients/{id}', 'ClientsController@destroy');
 Route::post('put/clients',        'ClientsController@update');
 Route::post('clients',            'ClientsController@store');

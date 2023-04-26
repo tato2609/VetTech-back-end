@@ -3,8 +3,8 @@
 namespace Modules\Clients\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Clients\Models\Clients;
+use Illuminate\Database\Eloquent\Model;
 
 class ClientsDatabaseSeeder extends Seeder
 {

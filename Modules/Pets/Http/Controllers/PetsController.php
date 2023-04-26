@@ -2,9 +2,11 @@
 
 namespace Modules\Pets\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Modules\Pets\Models\Pets;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Pets\Http\Requests\PetsValidateRequest;
 
 class PetsController extends Controller
 {
@@ -14,7 +16,16 @@ class PetsController extends Controller
      */
     public function index()
     {
-        return view('pets::index');
+        try {
+            $pets = Pets::all();
+            $response=[
+                "message"=>"Listado de mascotas generado con exito",
+                "data"=>$pets
+            ];
+            return response($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -28,12 +39,33 @@ class PetsController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param PetsValidateRequest $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(PetsValidateRequest $request, Pets $pets)
     {
-        //
+        try {
+            $verify = Pets::where('client_id',$request->client_id)->where('name','like', '%' . $request->name . '%')->first();
+            if ($verify) {
+                $response=[
+                    "message"=> "La mascota ya se encuentra registrada",
+                    "data"=> $verify
+                ];
+            }else {
+               $pets->name      = $request->name;
+               $pets->age       = $request->age;
+               $pets->client_id = $request->client_id;
+               $pets->status    = $request->status;
+               $pets->save();
+                $response=[
+                    "message"=> "Mascota registrada con exito",
+                    "data"=> $pets
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

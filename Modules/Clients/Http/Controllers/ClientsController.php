@@ -74,10 +74,21 @@ class ClientsController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id,Clients $client)
+    public function show($id)
     {
+        return "Hola mundo";
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function edit($id, Clients $client)
+    {
+        // return $id
         try {
-            $verify = $client::find($id)->first();
+            $verify = $client::find($id);
             $response= [
                 "message" => "Usuario encontrado con exito",
                 "data"    => $verify
@@ -89,16 +100,6 @@ class ClientsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('clients::edit');
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param ClientsValidateRequest $request
      * @param int $id
@@ -107,7 +108,7 @@ class ClientsController extends Controller
     public function update(ClientsValidateRequest $request)
     {
         try {
-            $verify = Clients::find($request->id)->first();
+            $verify = Clients::find($request->id);
             if ($verify) {
                 $update=Clients::where('id',$request->id)->update([
                     "name"=>$request->name,
@@ -140,7 +141,7 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        $verify = Clients::find($id)->first();
+        $verify = Clients::find($id);
         if ($verify) {
             $destroy=Clients::where('id',$id)->update([
                 "status"=> false
