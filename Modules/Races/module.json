@@ -1,0 +1,11 @@
+{
+    "name": "Races",
+    "alias": "races",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Races\\Providers\\RacesServiceProvider"
+    ],
+    "files": []
+}

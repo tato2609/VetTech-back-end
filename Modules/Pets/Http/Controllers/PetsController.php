@@ -29,15 +29,6 @@ class PetsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('pets::create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      * @param PetsValidateRequest $request
      * @return Renderable
@@ -99,24 +90,39 @@ class PetsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('pets::edit');
-    }
-
-    /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
+     * @param PetsValidateRequest $request
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(PetsValidateRequest $request )
     {
-        //
+        try {
+            $verify = Pets::find($request->id);
+            if ($verify) {
+                $update = Pets::where('id',$request->id)->update([
+                    "name"          =>$request->name,
+                    "age"           =>$request->age,
+                    "client_id"     =>$request->client_id,
+                    "race"          =>$request->race,
+                    "species"       =>$request->species,
+                    "sex"           =>$request->sex,
+                    "registered_by" =>$request->registered_by,
+                    "status"        =>$request->status
+                ]);
+                $response= [
+                    "message" => "Datos de la mascota actualizado con exito",
+                    "data"    => $update
+                ];
+            }else {
+                $response= [
+                    "message" => "Error al actualizar los datos de la mascota",
+                    "data"    => $verify
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -126,6 +132,21 @@ class PetsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $verify = Pets::find($id);
+        if ($verify) {
+            $destroy=Pets::where('id',$id)->update([
+                "status"=> false
+            ]);
+            $response= [
+                "message" => "Mascota eliminada con exito del sistema",
+                "data"    => $destroy
+            ];
+        }else {
+            $response= [
+                "message" => "Error al eliminar la mascota del sistema",
+                "data"    => $verify
+            ];
+        }
+        return response()->json($response,200);
     }
 }
