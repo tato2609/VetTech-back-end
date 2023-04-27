@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Modules\Pets\Http\Controllers\PetsController;
+use Modules\Races\Http\Controllers\RacesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,8 +13,8 @@ use Modules\Pets\Http\Controllers\PetsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('pets',              [PetsController::class,'index']);
-Route::get('pets/{id}',         [PetsController::class,'show']);
-Route::get('destroy/pets/{id}', [PetsController::class,'destroy']);
-Route::post('pets',             [PetsController::class,'store']);
-Route::post('put/pets',         [PetsController::class,'update']);
+Route::get('races',             [RacesController::class,'index']);
+Route::get('races/{id}',        [RacesController::class,'show']);
+Route::get('destroy/races/{id}',[RacesController::class,'destroy']);
+Route::post('races',            [RacesController::class,'store']);
+Route::put('put/races',         [RacesController::class,'update']);

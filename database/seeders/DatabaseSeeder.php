@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Pets\Database\Seeders\PetsDatabaseSeeder;
 use Modules\Clients\Database\Seeders\ClientsDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ClientsDatabaseSeeder::class
+            ClientsDatabaseSeeder::class,
+            PetsDatabaseSeeder::class
         ]);
     }
 }

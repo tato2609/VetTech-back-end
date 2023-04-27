@@ -2,9 +2,11 @@
 
 namespace Modules\Pets\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Modules\Pets\Models\Pets;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Pets\Http\Requests\PetsValidateRequest;
 
 class PetsController extends Controller
 {
@@ -14,26 +16,51 @@ class PetsController extends Controller
      */
     public function index()
     {
-        return view('pets::index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('pets::create');
+        try {
+            $pets = Pets::with('cliente')->get();
+            $response=[
+                "message"=>"Listado de mascotas generado con exito",
+                "data"=>$pets
+            ];
+            return response($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param PetsValidateRequest $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(PetsValidateRequest $request, Pets $pets)
     {
-        //
+        try {
+            $verify = Pets::where('client_id',$request->client_id)->where('name','like', '%' . $request->name . '%')->first();
+            if ($verify) {
+                $response=[
+                    "message"=> "La mascota ya se encuentra registrada",
+                    "data"=> $verify
+                ];
+            }else {
+               $pets->name          = $request->name;
+               $pets->age           = $request->age;
+               $pets->client_id     = $request->client_id;
+               $pets->race          = $request->race;
+               $pets->species       = $request->species;
+               $pets->sex           = $request->sex;
+               $pets->registered_by = $request->registered_by;
+               $pets->status        = $request->status;
+               $pets->save();
+                $response=[
+                    "message"=> "Mascota registrada con exito",
+                    "data"=> $pets
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -43,28 +70,59 @@ class PetsController extends Controller
      */
     public function show($id)
     {
-        return view('pets::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('pets::edit');
+        try {
+            if ($id) {
+                $pets = Pets::with('cliente')->find($id);
+                $response= [
+                    "message"=>"Mascota encontrada",
+                    "data"=>$pets
+                ];
+            }else {
+                $response=[
+                    "message"=>"Error al buscar la mascota con el id",
+                    "data"=> $id
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
+     * @param PetsValidateRequest $request
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(PetsValidateRequest $request )
     {
-        //
+        try {
+            $verify = Pets::find($request->id);
+            if ($verify) {
+                $update = Pets::where('id',$request->id)->update([
+                    "name"          =>$request->name,
+                    "age"           =>$request->age,
+                    "client_id"     =>$request->client_id,
+                    "race"          =>$request->race,
+                    "species"       =>$request->species,
+                    "sex"           =>$request->sex,
+                    "registered_by" =>$request->registered_by,
+                    "status"        =>$request->status
+                ]);
+                $response= [
+                    "message" => "Datos de la mascota actualizado con exito",
+                    "data"    => $update
+                ];
+            }else {
+                $response= [
+                    "message" => "Error al actualizar los datos de la mascota",
+                    "data"    => $verify
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
@@ -74,6 +132,21 @@ class PetsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $verify = Pets::find($id);
+        if ($verify) {
+            $destroy=Pets::where('id',$id)->update([
+                "status"=> false
+            ]);
+            $response= [
+                "message" => "Mascota eliminada con exito del sistema",
+                "data"    => $destroy
+            ];
+        }else {
+            $response= [
+                "message" => "Error al eliminar la mascota del sistema",
+                "data"    => $verify
+            ];
+        }
+        return response()->json($response,200);
     }
 }
