@@ -23,10 +23,14 @@ class PetsValidateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      =>  ['required','string','min:1','max:255'],
-            'age'       =>  ['required','string','min:1','max:255'],
-            'client_id' =>  ['required','string','min:1','max:255'],
-            'status'    =>  ['required', 'boolean'],
+            'name'          =>  ['required','string','min:1','max:255'],
+            'age'           =>  ['required','string','min:1','max:255'],
+            'race'          =>  ['required','string','min:1','max:255'],
+            'species'       =>  ['required','string','min:1','max:255'],
+            'sex'           =>  ['required','string','min:1','max:255'],
+            'registered_by' =>  ['required','string','min:1','max:255'],
+            'client_id'     =>  ['required','string','min:1','max:255'],
+            'status'        =>  ['required', 'boolean'],
         ];
     }
 

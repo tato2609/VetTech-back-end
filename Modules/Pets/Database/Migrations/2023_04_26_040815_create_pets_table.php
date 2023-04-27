@@ -21,10 +21,31 @@ return new class extends Migration
             $table->string('name')
                 ->comment('Nombre del cliente');
 
-            # En: Adge of pets
+            # En: Pet age
             # Es: Edad de la mascota
             $table->string('age')
                 ->comment('Edad de la mascota');
+
+            # En: Pet breed
+            # Es: Raza de la mascota
+            $table->string('race')
+                ->comment('Raza de la mascota');
+
+            # En: Animal species
+            # Es: Especie del animal
+            $table->string('species')
+                ->comment('Edad de la mascota');
+
+            # En: Pet sex
+            # Es: Sexo de la mascota
+            $table->string('sex')
+                ->comment('Sexo de la mascota');
+
+            # En: Registered by
+            # Es: Quien registra
+            $table->string('registered_by')
+                ->comment('Edad de la mascota');
+            //foreignId('user_id')->constrained('users')->nullable();
 
             # En: Pet owner
             # Es: Dueño de la mascota Relacion con la tabla clientes

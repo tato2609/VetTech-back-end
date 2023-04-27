@@ -17,7 +17,7 @@ class PetsController extends Controller
     public function index()
     {
         try {
-            $pets = Pets::all();
+            $pets = Pets::with('cliente')->get();
             $response=[
                 "message"=>"Listado de mascotas generado con exito",
                 "data"=>$pets
@@ -52,10 +52,14 @@ class PetsController extends Controller
                     "data"=> $verify
                 ];
             }else {
-               $pets->name      = $request->name;
-               $pets->age       = $request->age;
-               $pets->client_id = $request->client_id;
-               $pets->status    = $request->status;
+               $pets->name          = $request->name;
+               $pets->age           = $request->age;
+               $pets->client_id     = $request->client_id;
+               $pets->race          = $request->race;
+               $pets->species       = $request->species;
+               $pets->sex           = $request->sex;
+               $pets->registered_by = $request->registered_by;
+               $pets->status        = $request->status;
                $pets->save();
                 $response=[
                     "message"=> "Mascota registrada con exito",
@@ -75,7 +79,23 @@ class PetsController extends Controller
      */
     public function show($id)
     {
-        return view('pets::show');
+        try {
+            if ($id) {
+                $pets = Pets::with('cliente')->find($id);
+                $response= [
+                    "message"=>"Mascota encontrada",
+                    "data"=>$pets
+                ];
+            }else {
+                $response=[
+                    "message"=>"Error al buscar la mascota con el id",
+                    "data"=> $id
+                ];
+            }
+            return response()->json($response,200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
