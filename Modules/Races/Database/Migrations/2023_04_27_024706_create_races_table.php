@@ -16,6 +16,16 @@ return new class extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->id();
 
+            # En: Name of race
+            # Es: Nombre de la raza
+            $table->string('name')
+                ->comment('Nombre de la raza');
+
+            # En: Status field
+            # Es: Campo de estado
+            $table->boolean('status')
+                ->comment('Campo de estado');
+
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Pets\Models;
+namespace Modules\Races\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

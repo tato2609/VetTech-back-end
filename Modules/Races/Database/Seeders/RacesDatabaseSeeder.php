@@ -2,9 +2,9 @@
 
 namespace Modules\Races\Database\Seeders;
 
+use Modules\Races\Models\Races;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
 class RacesDatabaseSeeder extends Seeder
 {
     /**
@@ -14,8 +14,19 @@ class RacesDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        $races = [
+        [
+            'name'          => 'Schnauzer',
+            'status'        => true,
+        ],
+        [
+            'name'          => 'Husky',
+            'status'        => true,
+        ],
+    ];
 
-        // $this->call("OthersTableSeeder");
+    foreach ($races as $race) {
+        Races::create($race);
+    }
     }
 }
