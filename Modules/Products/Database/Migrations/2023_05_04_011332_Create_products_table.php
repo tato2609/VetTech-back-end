@@ -40,7 +40,7 @@ return new class extends Migration
 
             # En: Quantity of products
             # Es: Cantidad del producto
-            $table->integer('quantity')
+            $table->string('quantity')
                 ->comment('Cantidad del producto');
 
              # En: Product Registered by 

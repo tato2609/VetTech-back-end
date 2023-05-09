@@ -23,7 +23,7 @@ class ProductsDatabaseSeeder extends Seeder
                 'name'          => 'Comida para perro',
                 'description'   => 'Paquete por 500gr',
                 'manufacturer'  => 'Purina',
-                'quantity'      => 50,
+                'quantity'      => '50',
                 'registered_by' => 'Javier Esquivia',
                
             ],
@@ -32,14 +32,14 @@ class ProductsDatabaseSeeder extends Seeder
                 'name'          => 'Comida para Gato',
                 'description'   => 'Paquete por 250gr',
                 'manufacturer'  => 'Purina',
-                'quantity'      => 50,
+                'quantity'      => '50',
                 'registered_by' => 'Javier Esquivia',
             ],
 
         ];
 
         foreach ($products as $product) {
-            Products::create($products);
+            Products::create($product);
         }
 
         // $this->call("OthersTableSeeder");
