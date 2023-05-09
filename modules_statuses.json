@@ -1,5 +1,7 @@
 {
     "Clients": true,
     "Pets": true,
-    "Races": true
+    "Races": true,
+    "ModuleProducts": true,
+    "Products": true
 }

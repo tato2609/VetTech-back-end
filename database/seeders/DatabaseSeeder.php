@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Pets\Database\Seeders\PetsDatabaseSeeder;
 use Modules\Clients\Database\Seeders\ClientsDatabaseSeeder;
+use Modules\Products\Database\Seeders\ProductsDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ClientsDatabaseSeeder::class,
-            PetsDatabaseSeeder::class
+            PetsDatabaseSeeder::class,
+            ProductsDatabaseSeeder::class
         ]);
     }
 }
